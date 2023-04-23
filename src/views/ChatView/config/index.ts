@@ -1,6 +1,7 @@
 import { type Component, markRaw } from 'vue'
-import SuggestQuestion from '../components/SuggestQuestion.vue'
-import SeriveScore from '../components/ServiceScore.vue'
+// import SuggestQuestion from '../components/SuggestQuestion.vue'
+// import SeriveScore from '../components/ServiceScore.vue'
+import FeedbackPanel from '../components/FeedbackPanel.vue'
 
 type User = {
   name: string
@@ -29,7 +30,8 @@ export const user: User = {
 }
 
 // const suggestQuestion = markRaw(SuggestQuestion)
-const seriveScore = markRaw(SeriveScore)
+// const seriveScore = markRaw(SeriveScore)
+const feedbackPanel = markRaw(FeedbackPanel)
 
 export const mockMessageList: Array<Message> = [
   {
@@ -40,7 +42,7 @@ export const mockMessageList: Array<Message> = [
       text: '您好！TDesign智能客服为你服务，请输入您的问题。',
       imgUrl: 'https://tdesign.gtimg.com/miniprogram/images/avatar1.png'
     },
-    compontent: [seriveScore]
+    compontent: [feedbackPanel]
   },
   {
     id: 2,
