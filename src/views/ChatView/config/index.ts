@@ -1,5 +1,6 @@
 import { type Component, markRaw } from 'vue'
 import SuggestQuestion from '../components/SuggestQuestion.vue'
+import SeriveScore from '../components/ServiceScore.vue'
 
 type User = {
   name: string
@@ -27,7 +28,8 @@ export const user: User = {
   avatar: 'https://avatars.githubusercontent.com/u/42566669?v=4'
 }
 
-const suggestQuestion = markRaw(SuggestQuestion)
+// const suggestQuestion = markRaw(SuggestQuestion)
+const seriveScore = markRaw(SeriveScore)
 
 export const mockMessageList: Array<Message> = [
   {
@@ -35,9 +37,10 @@ export const mockMessageList: Array<Message> = [
     type: 'robot',
     identity: robt,
     msg: {
-      text: '您好！TDesign智能客服为你服务，请输入您的问题。'
+      text: '您好！TDesign智能客服为你服务，请输入您的问题。',
+      imgUrl: 'https://tdesign.gtimg.com/miniprogram/images/avatar1.png'
     },
-    compontent: [suggestQuestion]
+    compontent: [seriveScore]
   },
   {
     id: 2,
