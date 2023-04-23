@@ -1,18 +1,32 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { mockMessageList } from './config/index'
+import { onMounted,ref } from 'vue'
+import TaskTabs from '@/views/ChatView/components/TaskTabs.vue'
+import { mockMessageList,type Message,user } from './config/index'
 
 document.title = '专属客服'
 const containerRef = ref<HTMLDivElement | null>(null)
 const inputRef = ref<HTMLInputElement>()
-const messgeList = ref(mockMessageList)
+const messgeList = ref<Array<Message>>(mockMessageList)
 const init = () => {
   const dom = containerRef.value as HTMLDivElement
   if (dom) {
     setTimeout(() => {
-      dom.scrollTo(0, 100000)
-    }, 200)
+      dom.scrollTo(0,100000)
+    },10)
   }
+}
+
+const clickTabs = (item: string) => {
+  const userMsg: Message = {
+    id: Math.random(),
+    type: 'user',
+    identity: user,
+    msg: {
+      text: item,
+    }
+  }
+  messgeList.value.push(userMsg)
+  init()
 }
 
 onMounted(() => {
@@ -35,18 +49,13 @@ onMounted(() => {
             <div class="chat-view__robot__msgBox">
               <div class="chat-view__robot__message">
                 <span class="text">{{ item.msg.text }}</span>
-                <t-image
-                  class="img"
-                  v-if="item.msg.imgUrl"
-                  fit="fill"
-                  :src="item.msg.imgUrl"
-                ></t-image>
+                <t-image class="img" v-if="item.msg.imgUrl" fit="fill" :src="item.msg.imgUrl"></t-image>
               </div>
             </div>
             <!-- 机器人自定义模块 -->
             <div class="chat-view__robot__msgBox" v-if="item.compontent">
               <div class="chat-view__robot__component">
-                <Component :is="comp" v-for="(comp, index) in item.compontent" :key="index" />
+                <Component :is="comp" v-for="(comp,index) in item.compontent" :key="index" />
               </div>
             </div>
           </div>
@@ -68,9 +77,9 @@ onMounted(() => {
       </template>
     </div>
     <div class="chat-view__footer">
-      <div></div>
+      <TaskTabs @clickTabs="clickTabs" />
       <div class="chat-view__footer__input__box">
-        <input type="" placeholder="请输入你的问题" ref="inputRef"  />
+        <input type="" placeholder="请输入你的问题" ref="inputRef" />
         <button disabled>发送</button>
       </div>
     </div>

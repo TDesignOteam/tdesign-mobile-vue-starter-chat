@@ -7,7 +7,7 @@ type User = {
   avatar: string
 }
 
-type Message = {
+export type Message = {
   id: number
   type: 'user' | 'robot'
   identity: User
