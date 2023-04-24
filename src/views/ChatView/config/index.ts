@@ -1,7 +1,7 @@
 import { type Component, markRaw } from 'vue'
 // import SuggestQuestion from '../components/SuggestQuestion.vue'
 // import SeriveScore from '../components/ServiceScore.vue'
-import FeedbackPanel from '../components/FeedbackPanel.vue'
+import FeedbackPanel from '../modules/FeedbackPanel.vue'
 
 type User = {
   name: string
