@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import TaskTabs from '@/views/ChatView/components/TaskTabs.vue'
 import KeywordList from '@/views/ChatView/components/KeywordList.vue'
+import { v4 as uuidv4 } from 'uuid'
 import { mockMessageList, type Message, user, robot, rotbotReply } from './config/index'
 import { KEY_WORDSLIST } from './config/constant'
 
@@ -21,7 +22,7 @@ const init = () => {
 
 const userSpeak = (item: string) => {
   const userMsg: Message = {
-    id: Math.random(),
+    id: uuidv4(),
     type: 'user',
     msg: {
       text: item
