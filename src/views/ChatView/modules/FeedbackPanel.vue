@@ -1,4 +1,5 @@
-<script lang="ts" setup name="FeedbackPanel"></script>
+<script lang="ts" setup name="FeedbackPanel">
+</script>
 
 <template>
   <div class="feedback-panel">

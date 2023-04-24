@@ -4,7 +4,7 @@ import KeywordHighLight from './KeywordHighLight'
 defineProps({
   list: {
     type: Array<string>,
-    default: () => [],
+    default: () => []
   },
   keyword: {
     type: String,
@@ -16,7 +16,7 @@ defineProps({
 <template>
   <div class="keyword_list">
     <div class="keyword_list__item" v-for="(item, index) in list" :key="index">
-      <KeywordHighLight :originText="item" :keyword="keyword" />
+      <KeywordHighLight :originText="item" :keyword="keyword" @click="$emit('clickItem', item)" />
     </div>
   </div>
 </template>
