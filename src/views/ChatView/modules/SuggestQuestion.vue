@@ -12,7 +12,14 @@ defineProps({
   <div class="suggest-question">
     <div class="suggest-question__title">我猜想您想问如下问题</div>
     <div class="suggest-question__content">
-      <div v-for="(item, index) in list" :key="index" @click="$emit('onClick', item)">{{ item }}</div>
+      <div
+        class="suggest-question__item"
+        v-for="(item, index) in list"
+        :key="index"
+        @click="$emit('onClick', item)"
+      >
+        {{ item }}
+      </div>
     </div>
   </div>
 </template>
@@ -31,18 +38,18 @@ defineProps({
 
   &__content {
     padding: 0 16px;
+  }
 
-    > div {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      height: 48px;
-      font-size: 14px;
-      color: rgba(0, 0, 0, 0.9);
+  &__item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.9);
 
-      &:not(:last-child) {
-        border-bottom: 0.5px solid #e7e7e7ff;
-      }
+    &:not(:last-child) {
+      border-bottom: 0.5px solid #e7e7e7ff;
     }
   }
 }

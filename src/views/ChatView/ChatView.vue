@@ -63,22 +63,22 @@ const kewwordList = computed(() => {
     <div class="chat-view__container" ref="containerRef">
       <template v-for="item in messgeList" :key="item.id">
         <!-- robot -->
-        <div class="chat-view__robot" v-if="item.type === 'robot'">
-          <div class="chat-view__robot__avatar">
-            <img :src="robot.avatar" />
+        <div class="chat-view-robot" v-if="item.type === 'robot'">
+          <div class="chat-view-robot__avatar">
+            <img class="img" :src="robot.avatar" />
           </div>
-          <div class="chat-view__robot__content">
-            <div class="chat-view__robot__name">{{ robot.name }}</div>
+          <div class="chat-view-robot__content">
+            <div class="chat-view-robot__name">{{ robot.name }}</div>
             <!-- 机器消息 -->
-            <div class="chat-view__robot__msgBox">
-              <div class="chat-view__robot__message" v-if="item.msg.text || item.msg.imgUrl">
+            <div class="chat-view-robot__msgBox">
+              <div class="chat-view-robot__message" v-if="item.msg.text || item.msg.imgUrl">
                 <span class="text">{{ item.msg.text }}</span>
                 <img class="img" :src="item.msg.imgUrl" alt="" />
               </div>
             </div>
             <!-- 机器人自定义模块 -->
-            <div class="chat-view__robot__msgBox" v-if="item.compontent">
-              <div class="chat-view__robot__component">
+            <div class="chat-view-robot__msgBox" v-if="item.compontent">
+              <div class="chat-view-robot__component">
                 <Component
                   @onClick="userSpeak"
                   :is="comp"
@@ -90,35 +90,36 @@ const kewwordList = computed(() => {
           </div>
         </div>
         <!-- 用户 -->
-        <div class="chat-view__user" v-if="item.type === 'user'">
-          <div class="chat-view__user__content">
-            <div class="chat-view__user__name">{{ user.name }}</div>
-            <div class="chat-view__user__msgBox">
-              <div class="chat-view__user__message">
+        <div class="chat-view-user" v-if="item.type === 'user'">
+          <div class="chat-view-user__content">
+            <div class="chat-view-user__name">{{ user.name }}</div>
+            <div class="chat-view-user__msgBox">
+              <div class="chat-view-user__message">
                 <span>{{ item.msg.text }}</span>
               </div>
             </div>
           </div>
-          <div class="chat-view__user__avatar">
-            <img :src="user.avatar" alt="" />
+          <div class="chat-view-user__avatar">
+            <img class="img" :src="user.avatar" alt="" />
           </div>
         </div>
       </template>
     </div>
-    <div class="chat-view__footer">
+    <div class="chat-view-footer">
       <TaskTabs @clickTabs="userSpeak" />
-      <div class="chat-view__footer__keyword" v-if="kewwordList.length > 0">
+      <div class="chat-view-footer__keyword" v-if="kewwordList.length > 0">
         <KeywordList :list="kewwordList" @clickItem="clickItem" :keyword="inputValue" />
       </div>
-      <div class="chat-view__footer__input__box">
+      <div class="chat-view-footer__inputBox">
         <input
+          class="input"
           @keydown.enter="onPressEnter"
           placeholder="请输入你的问题"
           ref="inputRef"
           v-model="inputValue"
           enterkeyhint="send"
         />
-        <t-button :disabled="inputValue.trim().length <= 0" @click="sendMsg">发送</t-button>
+        <t-button class="button" :disabled="inputValue.trim().length <= 0" @click="sendMsg">发送</t-button>
       </div>
     </div>
   </div>

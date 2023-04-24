@@ -4,11 +4,11 @@ export default defineComponent({
   props: {
     originText: {
       type: String,
-      default: '如何使用TDesign组件库？'
+      default: ''
     },
     keyword: {
       type: String,
-      default: '组件'
+      default: ''
     }
   },
   __name: 'KeywordHighLight',
