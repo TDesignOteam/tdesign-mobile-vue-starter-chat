@@ -1,9 +1,9 @@
 {
-  "name": "tdesign-miniprogram-starter-chat",
+  "name": "tdesign-mobile-vue-starter-chat",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -12,12 +12,16 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "less": "^4.1.3",
+    "tdesign-mobile-vue": "0.18.0-beta",
+    "uuid": "^9.0.0",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
     "@types/node": "^18.14.2",
+    "@types/uuid": "^9.0.1",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitejs/plugin-vue-jsx": "^3.0.0",
     "@vue/eslint-config-prettier": "^7.1.0",
