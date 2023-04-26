@@ -1,0 +1,46 @@
+name: Preview Build
+on:
+  pull_request:
+
+jobs:
+  build-preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      # 产物压缩
+      - run: |
+          zip -r dist.zip dist
+
+      - name: Archive artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist.zip
+          retention-days: 5
+
+      - name: Save PR number
+        if: ${{ always() }}
+        run: echo ${{ github.event.number }} > ./pr-id.txt
+
+      - name: Upload PR number
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: pr
+          path: ./pr-id.txt
